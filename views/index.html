@@ -3,66 +3,68 @@
 <html lang="en">
     <head>
         <title> Flippin' Burgers</title>
+        <link rel="reset" type="text/css" href="css/resetCSS.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
         <meta charset="utf-8"/>
     </head>
+
     <body>
       <main>
-        <h1> Welcome to Flippin' Burgers! </h1>
+        <header class="header">
+          <a href="http://www.google.com/"> </a>
+          <img id="headerPic" src="https://static1.squarespace.com/static/575de1c2f699bb2cb6518f97/t/575e24579f7266835096fbbc/1506575563061/DSCF2626.jpg?format=2500w" alt="Span" title="header" width="1070">
+          <h1 id="headerText"> Welcome to Flippin' Burgers! </h1>
+        </header>
+
       </main>
-      <section>
-        <h3> Select burger </h3>
+      <section id="selectBurger">
+        <h2> Select burger </h2>
           <p> This is where you execute burger selection. </p>
-          <table>
-            <thead>
-              <tr>
-                <th> The Best Burgah Evah </th>
-                <th> Fickin' Chickin' </th>
-                <th> Veggie Heaven </th>
-              </tr>
-            </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="http://www.google.com/"> </a>
-                <img src="https://media.timeout.com/images/103343770/1372/772/image.jpg" alt="Span" title="Best burger evah" width="300">
-              </td>
-              <td>
-                <a href="http://www.google.com/"> </a>
-                <img src="https://93546-d-c.ooyala.com/content/images/1143/263141_1280x720.jpg" alt="Span" title="Frinckin' Chickin'" width="300">
-              </td>
-              <td>
-                <a href="http://www.google.com/"> </a>
-                <img src="https://lindamccartneyfoods.co.uk/media/1227/mozzarella-14lb-burgers-product.jpg" alt="Span" title="Veggie" width="304">
-              </tr>
-              <tr>
-                <td>
+          <div class="wrapper">
+            <div>
+              <div class="box a"> The Best Burger Evah </div>
+              <div class="box b"> <a href="http://www.google.com/"> </a>
+                <img src="https://media.timeout.com/images/103343770/1372/772/image.jpg" alt="Span" title="Best burger evah" width="350"> </div>
+              <div class="box c">
                   <ul>
-                    <li> High quality grass fed beef </li>
-                    <li> Organic vegetables </li>
-                    <li> Premium cheddar (contains lactose) </li>
-                  </ul>
-                </td>
-                <td>
-                  <ul>
-                    <li> Crispy chicken patty  </li>
-                    <li> Fresh fluffy bread (contains seeds)  </li>
-                    <li> Locally produced greens </li>
-                  </ul>
-                </td>
-                <td>
-                  <ul>
-                    <li> Bean burger </li>
-                    <li> Jucy marmelade from hand picked berries </li>
-                    <li> Vegan mayo </li>
-                  </ul>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                  <li> High quality grass fed beef </li>
+                  <li> Organic vegetables </li>
+                  <li> Premium cheddar (contains <span class="allergy">lactose</span>)</li>
+                </ul>
+              </div>
+            </div>
+
+            <div>
+              <div class="box d"> Frickin' Chickin' </div>
+              <div class="box e"> <a href="http://www.google.com/"> </a>
+                <img src="https://93546-d-c.ooyala.com/content/images/1143/263141_1280x720.jpg" alt="Span" title="Frickin Chickin" width="350"> </div>
+              <div class="box f">
+                <ul>
+                <li> Crispy chicken patty  </li>
+                <li> Fresh fluffy bread (contains<span class="allergy"> seeds</span>) </li>
+                <li> Locally produced greens </li>
+              </ul>
+              </div>
+            </div>
+
+            <div>
+              <div class="box g"> Veggie Heaven </div>
+              <div class="box h"><a href="http://www.google.com/"> </a>
+              <img src="https://lindamccartneyfoods.co.uk/media/1227/mozzarella-14lb-burgers-product.jpg" alt="Span" title="Veggie" width="354"> </div>
+              <div class="box i">
+                <ul>
+                <li> Jucy bean burger </li>
+                <li> Sweet marmelade from hand picked berries </li>
+                <li> Sourdough bread (contains <span class="allergy"> gluten</span>)</li>
+              </ul>
+              </div>
+            </div>
+
+          </div>
         </section>
 
-        <section>
-          <h3> Customer information </h3>
+        <section id="customerInfo">
+          <h2> Customer information </h2>
             <p> This is where you provide necessary information. </p>
               <section id="contact">
                 <form>
@@ -104,9 +106,10 @@
 
           </form>
           <a href="http://www.google.com/"> </a>
-            <button type="submit"><img src="https://c7.uihere.com/files/964/719/706/royalty-free-clip-art-place-order-thumb.jpg" alt="Span" title="check" width="20">
+            <button id="placeOrder" type="submit"><img src="https://c7.uihere.com/files/964/719/706/royalty-free-clip-art-place-order-thumb.jpg" alt="Span" title="check" width="20">
            Place Order</button>
         </section>
+
 
       <hr>
       <footer> &copy; 2019 Hypotheical Bugers Inc. </footer>
