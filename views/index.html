@@ -1,118 +1,170 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title> Flippin' Burgers</title>
-        <link rel="reset" type="text/css" href="css/resetCSS.css">
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <meta charset="utf-8"/>
-    </head>
+  <head>
+    <title> Flippin' Burgers</title>
+    <link rel="reset" type="text/css" href="css/resetCSS.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta charset="utf-8"/>
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script src="js/js_script.js" defer></script>
+    <script src="https://vuejs.org/js/vue.js" defer></script>
+    <script src="js/vue_script.js" defer></script>
+  </head>
 
-    <body>
-      <main>
-        <header class="header">
-          <a href="http://www.google.com/"> </a>
-          <img id="headerPic" src="https://static1.squarespace.com/static/575de1c2f699bb2cb6518f97/t/575e24579f7266835096fbbc/1506575563061/DSCF2626.jpg?format=2500w" alt="Span" title="header" width="1070">
-          <h1 id="headerText"> Welcome to Flippin' Burgers! </h1>
-        </header>
+  <body>
+    <main>
+      <header class="header">
+        <a href="http://www.google.com/"> </a>
+        <img id="headerPic" src="https://static1.squarespace.com/static/575de1c2f699bb2cb6518f97/t/575e24579f7266835096fbbc/1506575563061/DSCF2626.jpg?format=2500w" alt="Span" title="header" width="1070">
+        <h1 id="headerText"> Welcome to Flippin' Burgers! </h1>
+      </header>
+    </main>
 
-      </main>
-      <section id="selectBurger">
-        <h2> Select burger </h2>
-          <p> This is where you execute burger selection. </p>
-          <div class="wrapper">
-            <div>
-              <div class="box a"> The Best Burger Evah </div>
-              <div class="box b"> <a href="http://www.google.com/"> </a>
-                <img src="https://media.timeout.com/images/103343770/1372/772/image.jpg" alt="Span" title="Best burger evah" width="350"> </div>
-              <div class="box c">
-                  <ul>
-                  <li> High quality grass fed beef </li>
-                  <li> Organic vegetables </li>
-                  <li> Premium cheddar (contains <span class="allergy">lactose</span>)</li>
-                </ul>
-              </div>
-            </div>
+<!-- SelectBurger in Vue-->
+<div id="selectBurger">
+<div id="wrapper">
+<div> <h1> Select your burger</h1> </div>
+  <section id="burger">
+    <div v-for= "burger in burgers">
+      <input class="checkBox" :value="burger.name" type="checkBox"></input> <h3 class="burgerName"> {{burger.name}}</h3>
+      <img class="burgerImage" :src="burger.image" ></img>
+      <ul id="description">
+        <li> {{burger.kCal}}</li>
+        <li> {{burger.description}}</li>
+        <li v-for="allergy in burger.allergenes"> {{allergy}}</li>
+      </ul>
+    </div>
+  </section>
+</div>
+</div>
 
-            <div>
-              <div class="box d"> Frickin' Chickin' </div>
-              <div class="box e"> <a href="http://www.google.com/"> </a>
-                <img src="https://93546-d-c.ooyala.com/content/images/1143/263141_1280x720.jpg" alt="Span" title="Frickin Chickin" width="350"> </div>
-              <div class="box f">
-                <ul>
-                <li> Crispy chicken patty  </li>
-                <li> Fresh fluffy bread (contains<span class="allergy"> seeds</span>) </li>
-                <li> Locally produced greens </li>
-              </ul>
-              </div>
-            </div>
+<!-- 'SelectBurger in JavaScript-->
+<section id="selectBurger">
+  <div id="wrapper">
+  <h1> Select your burger </h1>
+    <div id="burger-grid">
+    </div>
+  </div>
+</section>
 
-            <div>
-              <div class="box g"> Veggie Heaven </div>
-              <div class="box h"><a href="http://www.google.com/"> </a>
-              <img src="https://lindamccartneyfoods.co.uk/media/1227/mozzarella-14lb-burgers-product.jpg" alt="Span" title="Veggie" width="354"> </div>
-              <div class="box i">
-                <ul>
-                <li> Jucy bean burger </li>
-                <li> Sweet marmelade from hand picked berries </li>
-                <li> Sourdough bread (contains <span class="allergy"> gluten</span>)</li>
-              </ul>
-              </div>
-            </div>
+<!-- SelectBurger in HTML/CSS-->
+<!--<section id="selectBurger">
+<h2> Select your burger </h2>
+  <p> This is where you execute burger selection. </p>
+  <div id="wrapper" class="wrapper">
+    <div id="columns" class="column">
+      <div class="box a" align="center"> The Best Burger Evah </div>
+      <div class="box b"> <a href="http://www.google.com/"> </a>
+        <img src="https://media.timeout.com/images/103343770/1372/772/image.jpg" alt="Span" title="Best burger evah" width="350"> </div>
+      <div class="box c">
+          <ul>
+          <li> High quality grass fed beef </li>
+          <li> Organic vegetables </li>
+          <li> Premium cheddar </li>
+          Contains:<span class="allergy"> lactose, gluten</span>
+        </ul>
+      </div>
+    </div>
 
-          </div>
-        </section>
+    <div class="column">
+      <div class="box d" align="center"> Frickin' Chickin' </div>
+      <div class="box e"> <a href="http://www.google.com/"> </a>
+        <img src="https://93546-d-c.ooyala.com/content/images/1143/263141_1280x720.jpg" alt="Span" title="Frickin Chickin" width="350"> </div>
+      <div class="box f">
+        <ul>
+        <li> Crispy chicken patty  </li>
+        <li> Fresh fluffy bread </li>
+        <li> Locally produced greens </li>
+        Contains:<span class="allergy"> seeds</span>
+      </ul>
+      </div>
+    </div>
 
-        <section id="customerInfo">
-          <h2> Customer information </h2>
-            <p> This is where you provide necessary information. </p>
-              <section id="contact">
-                <form>
-                  <h4> Delivery information: </h4>
-                    <p>
-                      <label for="fullname">Full name</label><br>
-                      <input type="text" id="fullname" name="fn" required="required" placeholder="First- and last name">
-                    </p>
-                    <p>
-                      <label for="email"> E-mail</label><br>
-                      <input type="text" id="email" name="em" required="required" placeholder="E-mail address">
-                    </p>
-                    <p>
-                      <label for="street"> Street</label><br>
-                      <input type="email" id="email" name="em" required="required" placeholder="Street name">
-                    </p>
-                    <p>
-                      <label for="house"> House</label><br>
-                      <input type="number" min="0" id="house" name="hn" placeholder="House number">
-                    </p>
+    <div>
+      <div class="box g" align="center"> Veggie Heaven </div>
+      <div class="box h"><a href="http://www.google.com/"> </a>
+      <img src="https://lindamccartneyfoods.co.uk/media/1227/mozzarella-14lb-burgers-product.jpg" alt="Span" title="Veggie" width="354"> </div>
+      <div class="box i">
+        <ul>
+        <li> Jucy bean burger </li>
+        <li> Marmelade from hand picked berries </li>
+        <li> Sourdough bread </li>
+        Contains:<span class="allergy"> gluten</span>
+      </ul>
+      </div>
+    </div>
 
-                <p>
-                  <label for="recipient"> Payment options</label><br>
-                  <select id="recipient" name="rcp">
-                    <option>Swish <selected="select"></option>
-                    <option>Credit card</option>
-                    <option>Invoice</option>
-                    <option> Cash</option>
-                  </select>
-                </p>
-              </section>
+  </div>
+</section>-->
 
-              <p>
-                <label for="gender"> Gender</label><br>
-                <input type="radio" name="gender" value="male"> Male<br>
-                <input type="radio" name="gender" value="female"> Female<br>
-                <input type="radio" name="gender" value="non binary"> Non-binary<br>
-                <input type="radio" name="gender" value="no answer" checked="checked"> Undisclosed<br>
+<div id="input">
+  <section id="customerInfo">
+    <h2> Customer information </h2>
+    <!--<p> This is where you provide necessary information. </p>-->
+    <section id="contact">
+      <form >
+        <h4> Delivery information: </h4>
+          <p>
+            <label for="fullname">Full name</label><br>
+            <input type="text" id="fullname" name="fn" required="required" placeholder="First- and last name">
+          </p>
+          <p>
+            <label for="email"> E-mail</label><br>
+            <input type="text" id="email" name="em" required="required" placeholder="E-mail address">
+          </p>
+          <p>
+            <label for="street"> Street</label><br>
+            <input type="email" id="street" name="em" required="required" placeholder="Street name">
+          </p>
+          <p>
+            <label for="house"> House</label><br>
+            <input type="number" min="0" id="house" name="hn" placeholder="House number">
+          </p>
 
-          </form>
-          <a href="http://www.google.com/"> </a>
-            <button id="placeOrder" type="submit"><img src="https://c7.uihere.com/files/964/719/706/royalty-free-clip-art-place-order-thumb.jpg" alt="Span" title="check" width="20">
-           Place Order</button>
-        </section>
+          <p>
+            <label for="recipient"> Payment options</label><br>
+            <select id="recipient" name="rcp">
+              <option>Swish <selected="select"></option>
+              <option>Credit card</option>
+              <option>Invoice</option>
+              <option> Cash</option>
+            </select>
+          </p>
+      </section>
+
+      <p>
+        <label for="gender"> Gender</label><br>
+        <input type="radio" name="gender" value="Male"> Male<br>
+        <input type="radio" name="gender" value="Female"> Female<br>
+        <input type="radio" name="gender" value="Non binary"> Non-binary<br>
+        <input type="radio" name="gender" value="Undisclosed" checked="checked"> Undisclosed<br>
+      </p>
+    </form>
+
+    <a href="http://www.google.com/"> </a>
+    <div >
+      <button id="placeOrder" v-on:click="markDone()" type="submit"><img src="https://c7.uihere.com/files/964/719/706/royalty-free-clip-art-place-order-thumb.jpg" alt="Span" title="check" width="20">
+      Place Order </button>
 
 
-      <hr>
-      <footer> &copy; 2019 Hypotheical Bugers Inc. </footer>
+    </div>
+   </section>
+   <div v-if="result">
+     <div>Full name: {{result[0]}} </div>
+     <div>E-mail: {{result[1]}}</div>
+     <div>Street: {{result[2]}}</div>
+     <div>House: {{result[3]}}</div>
+     <div>Payment option: {{result[4]}}</div>
+     <div>Gender: {{result[5]}}</div>
+     <div>Selected Burger(s): {{result[6]}} </div>
+ </div>
+   </div>
 
-    </body>
+
+
+    <hr>
+    <footer> &copy; 2019 Hypotheical Bugers Inc. </footer>
+
+  </body>
 </html>
