@@ -46,6 +46,9 @@ var veggieBurger = new MenuItem(veggieImg, "Veggie Heaven", "300", ["Gluten"], "
 var cheesyBurger = new MenuItem(cheesyImg, "Cheesy Greasy Burger", "500", ["Gluten", "Lactose"], "cheesy");
 var kidsBurger = new MenuItem(kidsImg, "Kid's Burger", "200", ["Gluten"], "small");
 */
+'use strict';
+var socket = io();
+
 var vm = new Vue ({
  el: '#burger',
  data: {
@@ -57,13 +60,37 @@ var vm = new Vue ({
 new Vue ({
   el:'#input',
   data: {
-    result: this.result
-
+    result: null,
+    checkedBurgers: null,
+    orders: {},
+    orderDetail: {}
+  },
+  created: function () {
+    socket.on('currentQueue', function (data) {
+      this.orders = data.orders;
+    }.bind(this));
   },
   methods: {
-    markDone: function () {
+    getNext: function () {
+      var lastOrder = Object.keys(this.orders).reduce(function (last, next) {
+        return Math.max(last, next);
+      }, 0);
+      return lastOrder + 1;
+    },
+    addOrder: function (event) {
       this.result = textFunc();
-      console.log(this.result)
+      this.checkedBurgers = selectedBurgers();
+      socket.emit("addOrder", { orderId: this.getNext(),
+                                details: this.orderDetail,
+                                orderItems: this.checkedBurgers,
+                                customerInfo: this.result
+                              });
+    },
+    displayOrders: function(event) {
+      var offset = {x: event.currentTarget.getBoundingClientRect().left,
+                    y: event.currentTarget.getBoundingClientRect().top};
+      this.orderDetail = { x: event.clientX - 10 - offset.x,
+                           y: event.clientY - 10 - offset.y };
     }
   }
 

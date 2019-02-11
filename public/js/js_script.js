@@ -45,18 +45,7 @@ var cheesyBurger = new MenuItem(cheesyImg, "Cheesy Greasy Burger", "500", ["Glut
 var kidsBurger = new MenuItem(kidsImg, "Kid's Burger", "200", ["Gluten"], "small");*/
 //CREATE SELECT BURGER
 
-const hasAllergenes = function() {
-    if (this.allergenes.includes("Lactose") || this.allergenes.includes("Gluten") ) {
-  return true;
-  }
-}
-const showAllergenes = function() {
-       if (this.hasAllergenes()) {
-      return this.allergenes.toString();
-      }
-}
-var burgers = food;
-
+/*var burgers = food;
 const insertBurger = function(parent, menuItem) {
   var div = document.createElement("div");
   var name = document.createElement("h3");
@@ -95,42 +84,49 @@ var grid = document.getElementById("burger-grid");
 for (var i=0; i < burgers.length; i++)
 {
   insertBurger(grid, burgers[i]);
-}
+}*/
 
+var array = [];
 var textFunc = function () {
-  var array = [];
+  array = [];
   var fn = document.getElementById("fullname");
   var email = document.getElementById("email");
-  var street = document.getElementById("street");
-  var house = document.getElementById("house");
+  //var street = document.getElementById("street");
+  //var house = document.getElementById("house");
   var payment = document.getElementById("recipient");
   var selectedPayment = payment.options[payment.selectedIndex].text;
   var radio = document.getElementsByName("gender");
-  var check = document.getElementsByClassName("checkBox");
 
-  array.push(fn.value, email.value, street.value, house.value, selectedPayment);
+
+  array.push(fn.value, email.value, /*street.value, house.value,*/ selectedPayment);
   for (var i=0; i<radio.length; i++)
   {
     if (radio[i].checked)
     {
       array.push(radio[i].value);
+      radio[i].checked = false;
+
     }
   }
-
-  var burgerList = [];
-  for(var i=0; i<check.length; i++)
-  {
-    if(check[i].checked){
-      burgerList.push(check[i].value);
-      console.log(check[i].value);
-    }
-  }
-  array.push(burgerList.toString());
-
-  console.log(array);
+  fn.value = "";
+  email.value = "";
+  
   return array;
 }
 
+var burgerList = [];
+ var selectedBurgers = function() {
+   burgerList = [];
+   var check = document.getElementsByClassName("checkBox");
+
+   for(var i=0; i<check.length; i++)
+   {
+     if(check[i].checked){
+       burgerList.push(check[i].value);
+     }
+   }
+   return burgerList;
+ }
 /*var orderButton = document.getElementById("placeOrder");
 orderButton.addEventListener("click", textFunc);*/
 /*console.log(bestBurger.img);
